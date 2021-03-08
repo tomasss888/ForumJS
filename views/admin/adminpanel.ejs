@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../partials/head'); %>
+  </head>
+
+  <body>
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+
+    <div class="middle">
+        
+        <h1>
+            Connected as
+            <% if(role == 2){ %>
+                Admin
+            <% } else{ %>  
+                Moderator
+            <% } %>
+        </h1>
+
+        <% for(var i=0; i<userdata.length; i++) {%>
+        <div class="admin_view_table">
+
+            <p>
+                <a class="element1" >ID: <%= userdata[i].id %></a>
+            </p>
+
+            <p>
+                <a class="element1" >Username: <%= userdata[i].username %></a>
+            </p>
+
+            <p>
+                <a class="element1" >Email: <%= userdata[i].email %></a>
+            </p>
+
+            <p>
+                <a class="element1" >Role: <%= userdata[i].role %></a>
+            </p>
+
+
+           
+
+            <% if(role == 2){ %>
+            <div class="admin_view_table_buttons">
+                <p>
+                    Promote to: 
+                </p>
+                <form method="POST" action="/admin/adminpanel/userRoleChange/<%= userdata[i].id %>/1">
+                    <input type="submit" value="User">
+                </form>
+
+                <form method="POST" action="/admin/adminpanel/userRoleChange/<%= userdata[i].id %>/2">
+                    <input type="submit" value="Admin">
+                </form>
+
+                <form method="POST" action="/admin/adminpanel/userRoleChange/<%= userdata[i].id %>/3">
+                    <input type="submit" value="Moderator">
+                </form>
+            </div>
+            <% } else{ %>  
+                <div class="admin_view_table_buttons">
+                    <p>
+                        Only admin can change roles
+                    </p>
+                </div>
+            <% } %>
+        </div>
+        <% } %>
+
+      </div>
+
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+      
+            
+    <div class="topnav">
+        <a class="active" href="/posts/topics">Home</a>
+        <% if(role != 1) {%>
+        <a class="active" href="/admin/adminpanel">Admin Pannel</a>
+        <% } %>
+        <div class="login-container">
+
+            <form action="/logout">
+                <p>Hello, <%= name %> </p>
+                <input  type="submit" value="Logout" />
+            </form>
+        </div>
+        </div> 
+              

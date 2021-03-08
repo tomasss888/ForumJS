@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../partials/head'); %>
+  </head>
+
+  <body>
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+
+    <div class="middle">
+        <h1>Posts</h1>
+    
+        <% for(var i=0; i<posts.length; i++) {%>
+          <div class="lines_post">
+            <h2>
+              <a class="element1" href="/posts/replies/<%=posts[i].id %>" >Post topic: <%= posts[i].body %> </a>
+            </h2>
+            <h2>
+              <a class="element3">User posted: <%= posts[i].user_id %></a>
+            </h2>
+            </div>
+        <% } %>
+
+
+        <div class="container">
+            <form method="POST" action="/posts/posts/make_post">
+          
+                <label for="fname">Topic name:</label>
+                <input name="body" type="text">
+                
+                <label for="subject">Subject:</label>
+                <textarea type="text" name="subject" style="height:200px"></textarea>
+          
+              <input type="submit" value="Submit">
+          
+            </form>
+          </div> 
+
+
+
+      </div>
+
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+  </body>
+</html>

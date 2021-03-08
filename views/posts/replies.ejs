@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../partials/head'); %>
+  </head>
+
+  <body>
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+
+      <div class="middle">
+          
+        
+        <% for(var i=0; i<posts.length; i++) {%>
+          <div class="lines_post">
+            <p>
+              <a class="element1" >Comment: <%= posts[i].body %></a>
+            </p>
+            <p>
+              <a class="element3">User commented: <%= posts[i].user_id %></a>
+            </p>
+
+
+            <div class="lines_post_buttons">
+              <% if(id == posts[i].user_id || role == 2 || role == 3) {%>
+              <form method="POSTZ" action="/posts/replies/delete/<%= posts[i].id %>">
+                <input type="submit" value="delete">
+              </form>
+              <br>
+              <% } %>
+              
+              <% if(id == posts[i].user_id || role == 2) {%>
+                <div class="box">
+                  
+                  <a class="button" href="#popup1" type="button"><input type="submit" value="update"></a>
+                  
+                </div>
+
+
+
+            
+                <div id="popup1" class="overlay">
+                  <div class="popup">
+                    <h2>Update the comment</h2>
+                    <a class="close" href="#">&times;</a>
+                    <div class="container">
+                      <form method="POST"  action="/posts/replies/update/<%= posts[i].id %>">
+                    
+                          
+                        <label for="subject">Update:</label>
+                        <textarea  name="body" type="text" style="height:200px"></textarea>
+                    
+                        <input type="submit" value="Up">
+                    
+                      </form>
+                    </div> 
+                  </div>
+                </div>
+                <% } %>
+
+            </div>
+
+          </div>
+        <% } %>
+
+        <div class="container">
+          <form method="POST"  action="/posts/replies/comment">
+        
+              
+              <label for="subject">Reply:</label>
+              <textarea  name="body" type="text" style="height:200px"></textarea>
+        
+            <input type="submit" value="Submit">
+        
+          </form>
+        </div> 
+
+
+
+      </div>
+
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+  </body>
+</html>

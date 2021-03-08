@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('partials/head'); %>
+  </head>
+
+  <body>
+    <header>
+        <%- include('partials/header'); %>
+    </header>
+
+      <div class="middle">
+        <div class="lines_post">
+          <form method="POST" action="/make_post">
+            <label class="element1">Make a post:</label>
+            <input class="element2"  name="text" type="text"></input>
+            <button class="element3" type="submit"  >Submit</button>
+            <p>----------------------------------------------------------------------</p>
+          </form>
+        </div>
+        <% for(var i=0; i<posts.length; i++) {%>
+          <form class="lines_post" method="POST" action="/delete_post/<%=posts[i].id %>">
+              <a class="element1">id:</a>
+
+               
+              
+              <script id="">var i</script>
+              <%=posts[i].id %>
+
+              <a class="element2">Text: </a ><%= posts[i].text %>
+              <button class="element3" href="Submit" name="button">Delete</button>
+          </form>
+        <% } %>
+      </div>
+
+    <footer>
+        <%- include('partials/footer'); %>
+    </footer>
+  </body>
+</html>
+
